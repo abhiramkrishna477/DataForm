@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVATES - Editor Profile Submission</title>
+    
+    <!-- Google Fonts: Inter for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* --- Global Styles & Modern Color Palette --- */
+        :root {
+            --primary-green: #a8ec04;
+            --primary-dark: #8bc203;
+            --accent-cyan: #00b4d8;
+            --accent-purple: #7209b7;
+            --bg-dark: #0d1117;
+            --bg-card: rgba(22, 27, 34, 0.8);
+            --text-primary: #e9ecef;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --input-bg: rgba(13, 17, 23, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--bg-dark), #161b22, #1a1f2e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb1 { width: 300px; height: 300px; background-color: var(--primary-green); top: -150px; right: -150px; animation-delay: 0s; }
+        .orb2 { width: 250px; height: 250px; background-color: var(--accent-cyan); bottom: -125px; left: -125px; animation-delay: 5s; }
+        .orb3 { width: 200px; height: 200px; background-color: var(--accent-purple); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 10s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--bg-card);
+            padding: 0;
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 50px 20px 50px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo img {
+            max-width: 180px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary-green), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0 5px 0;
+        }
+        .header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .form-content {
+            padding: 20px 50px 40px 50px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-green), var(--accent-cyan));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 0.5s ease forwards;
+        }
+        .form-section:nth-child(2) { animation-delay: 0.1s; }
+        .form-section:nth-child(3) { animation-delay: 0.2s; }
+        .form-section:nth-child(4) { animation-delay: 0.3s; }
+        .form-section:nth-child(5) { animation-delay: 0.4s; }
+        @keyframes fadeInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .section-title i {
+            margin-right: 12px;
+            color: var(--primary-green);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="url"], textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(168, 236, 4, 0.2);
+            background-color: var(--input-bg);
+        }
+        .helper-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+
+        .tag-container {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 50px;
+            cursor: text;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            background-color: var(--input-bg);
+            transition: all 0.3s ease;
+        }
+        .tag-container:focus-within {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(168, 236, 4, 0.1);
+        }
+        .tag {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            animation: tagPop 0.3s ease;
+        }
+        @keyframes tagPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .tag .remove {
+            cursor: pointer;
+            font-weight: bold;
+            opacity: 0.8;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .tag .remove:hover { opacity: 1; transform: scale(1.2); }
+        .tag-suggestions {
+            margin-top: 12px;
+        }
+        .tag-suggestion {
+            display: inline-block;
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            margin: 4px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .tag-suggestion:hover {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(168, 236, 4, 0.3);
+        }
+        .tag-suggestion.selected {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            border-color: transparent;
+        }
+        .proficiency-select {
+            margin-left: 10px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        
+        .manual-input-container {
+            display: flex;
+            margin-top: 10px;
+            gap: 8px;
+        }
+        .manual-input {
+            flex-grow: 1;
+        }
+        .add-btn {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+        }
+        .add-btn i {
+            margin-right: 5px;
+        }
+
+        .submit-btn-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+        button:hover::before {
+            left: 100%;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(168, 236, 4, 0.4);
+        }
+
+        #status-message {
+            text-align: center;
+            margin-top: 25px;
+            font-weight: 500;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #status-message.show { display: block; }
+        #status-message.success { background-color: #1e3a2e; color: #a7d3c1; border: 1px solid #2a5a45; }
+        #status-message.error { background-color: #3a1e1e; color: #d3a7a7; border: 1px solid #5a2a2a; }
+        #status-message.info { background-color: #1e2d3a; color: #a7c1d3; border: 1px solid #2a3d5a; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://z-cdn-media.chatglm.cn/files/9c92ead7-89a2-4362-ac77-a738d7d39d93_txt%20in%20down.png?auth_key=1761906378-74be8bcfeb984b05893aac62572cb937-0-853fd7ae855ba2881681bc8344b19830" alt="INNOVATES Logo">
+            </div>
+            <h1>Join the Helios Crew!</h1>
+            <p>Your skills deserve the spotlight. Join our network and shape visual stories with us.</p>
+        </div>
+
+        <div class="form-content">
+            <div class="progress-bar">
+                <div class="progress" id="form-progress"></div>
+            </div>
+
+            <form id="editor-form">
+                <!-- Category 1: Core Contact & Logistics -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-user"></i> 1. Core Contact & Logistics</div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location (City, State)</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., London, UK" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="languages">Languages You Handle</label>
+                        <input type="text" id="languages" name="languages" placeholder="e.g., English (Native), Hindi (Fluent)" required>
+                    </div>
+                </div>
+
+                <!-- Category 2: Professional Profile & Portfolio -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-briefcase"></i> 2. Professional Profile & Portfolio</div>
+                    <div class="form-group">
+                        <label for="years_experience">Years of Experience</label>
+                        <input type="number" id="years_experience" name="years_experience" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio_link">Portfolio / Previous Work Link</label>
+                        <input type="url" id="portfolio_link" name="portfolio_link" required>
+                        <p class="helper-text">Please provide a link to your portfolio, a showreel, or a cloud folder (like Google Drive/Dropbox) with examples of your work.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin_url">LinkedIn Profile URL (Optional)</label>
+                        <input type="url" id="linkedin_url" name="linkedin_url">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specializations">Specialization / Niche</label>
+                        <input type="text" id="specializations" name="specializations" placeholder="e.g., True-Crime Documentary, High-End Gaming Montages, Corporate Explainer Videos" required>
+                        <p class="helper-text">Please list your specializations, separated by commas.</p>
+                    </div>
+                </div>
+
+                <!-- Category 3: Skills & Proficiency -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-tools"></i> 3. Skills & Proficiency</div>
+                    <div class="form-group">
+                        <label>Software Proficiency</label>
+                        <p class="helper-text">Click to select all software you are familiar with, or add your own.</p>
+                        <div id="software-tags-container" class="tag-container"></div>
+                        <div id="software-suggestions" class="tag-suggestions">
+                            <span class="tag-suggestion" data-skill="Adobe Premiere Pro">Adobe Premiere Pro</span>
+                            <span class="tag-suggestion" data-skill="Final Cut Pro">Final Cut Pro</span>
+                            <span class="tag-suggestion" data-skill="DaVinci Resolve">DaVinci Resolve</span>
+                            <span class="tag-suggestion" data-skill="Avid Media Composer">Avid Media Composer</span>
+                            <span class="tag-suggestion" data-skill="Adobe After Effects">Adobe After Effects</span>
+                            <span class="tag-suggestion" data-skill="Adobe Audition">Adobe Audition</span>
+                        </div>
+                        <div class="manual-input-container">
+                            <input type="text" id="software-manual-input" class="manual-input" placeholder="Add custom software...">
+                            <button type="button" id="add-software-btn" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="most_proficient_sw">Which software are you MOST proficient in?</label>
+                        <select id="most_proficient_sw" name="most_proficient_sw">
+                            <option value="">-- First select your software above --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Technical Skills</label>
+                        <p class="helper-text">Click to select all skills you possess, or add your own. You can then rate your proficiency.</p>
+                        <div id="technical-tags-container" class="tag-container"></div>
+                        <div id="technical-suggestions" class="tag-suggestions">
+                            <span class="tag-suggestion" data-skill="Color Grading">Color Grading</span>
+                            <span class="tag-suggestion" data-skill="Motion Graphics (Basic)">Motion Graphics (Basic)</span>
+                            <span class="tag-suggestion" data-skill="Motion Graphics (Advanced)">Motion Graphics (Advanced)</span>
+                            <span class="tag-suggestion" data-skill="Audio Mixing / Sound Design">Audio Mixing / Sound Design</span>
+                            <span class="tag-suggestion" data-skill="Proxy Workflow">Proxy Workflow</span>
+                            <span class="tag-suggestion" data-skill="Multi-Cam Editing">Multi-Cam Editing</span>
+                            <span class="tag-suggestion" data-skill="Green Screen Keying">Green Screen Keying</span>
+                        </div>
+                        <div class="manual-input-container">
+                            <input type="text" id="technical-manual-input" class="manual-input" placeholder="Add custom technical skill...">
+                            <button type="button" id="add-technical-btn" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Business & Availability -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-dollar-sign"></i> 4. Business & Availability</div>
+                    <div class="form-group">
+                        <label for="hourly_rate">Hourly Rate (Rs/hr, Optional)</label>
+                        <input type="number" id="hourly_rate" name="hourly_rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_rate">Day Rate (Rs/day, Optional)</label>
+                        <input type="number" id="day_rate" name="day_rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred_work">What kind of work are you looking for?</label>
+                        <textarea id="preferred_work" name="preferred_work" rows="4" required></textarea>
+                        <p class="helper-text">Describe your ideal projects, clients, or work style.</p>
+                    </div>
+                </div>
+
+                <div class="submit-btn-wrapper">
+                    <button type="submit">Submit My Profile</button>
+                </div>
+            </form>
+            <div id="status-message"></div>
+        </div>
+    </div>
+
+    <!-- Supabase JS SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURATION ---
+            // Note: Replace these with your actual Supabase credentials
+            const SUPABASE_URL = 'https://weiqjcmkkeuqxodkoqpd.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlaXFqY21ra2V1cXhvZGtvcXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTMxMzgsImV4cCI6MjA3NzMyOTEzOH0.9hvIDbStGyFStnG0FJl_9w0LSbzcru9tf6drJ_uAKts';
+            
+            // Initialize Supabase client
+            let supabase;
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            } catch (error) {
+                console.warn('Supabase client not initialized. Form will work in demo mode.', error);
+            }
+
+            // --- PROGRESS BAR ---
+            const form = document.getElementById('editor-form');
+            const progressBar = document.getElementById('form-progress');
+            const allInputs = form.querySelectorAll('input[required], textarea[required]');
+            function updateProgress() {
+                const filledInputs = Array.from(allInputs).filter(input => input.value.trim() !== '');
+                const progress = (filledInputs.length / allInputs.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            allInputs.forEach(input => input.addEventListener('input', updateProgress));
+            
+            // --- TAGGING SYSTEM LOGIC ---
+            const selectedSoftwareSkills = new Set();
+            const selectedTechnicalSkills = new Map();
+            const softwareContainer = document.getElementById('software-tags-container');
+            const softwareSuggestions = document.getElementById('software-suggestions');
+            const mostProficientDropdown = document.getElementById('most_proficient_sw');
+            const technicalContainer = document.getElementById('technical-tags-container');
+            const technicalSuggestions = document.getElementById('technical-suggestions');
+            
+            // Manual input elements
+            const softwareManualInput = document.getElementById('software-manual-input');
+            const addSoftwareBtn = document.getElementById('add-software-btn');
+            const technicalManualInput = document.getElementById('technical-manual-input');
+            const addTechnicalBtn = document.getElementById('add-technical-btn');
+
+            function createTagElement(text, onRemove) {
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.innerHTML = `${text} <span class="remove">&times;</span>`;
+                tag.querySelector('.remove').onclick = onRemove;
+                return tag;
+            }
+
+            // --- Software Tagging Logic ---
+            function renderSoftwareTags() {
+                softwareContainer.innerHTML = '';
+                selectedSoftwareSkills.forEach(skill => {
+                    softwareContainer.appendChild(createTagElement(skill, () => {
+                        selectedSoftwareSkills.delete(skill);
+                        renderSoftwareTags();
+                    }));
+                });
+
+                softwareSuggestions.querySelectorAll('.tag-suggestion').forEach(pill => {
+                    pill.classList.toggle('selected', selectedSoftwareSkills.has(pill.dataset.skill));
+                });
+
+                mostProficientDropdown.innerHTML = '<option value="">-- Select your most proficient software --</option>';
+                if (selectedSoftwareSkills.size > 0) {
+                    mostProficientDropdown.disabled = false;
+                    selectedSoftwareSkills.forEach(skill => {
+                        const option = document.createElement('option');
+                        option.value = skill;
+                        option.textContent = skill;
+                        mostProficientDropdown.appendChild(option);
+                    });
+                } else {
+                    mostProficientDropdown.disabled = true;
+                }
+            }
+            
+            // Use event delegation on the parent container
+            softwareSuggestions.addEventListener('click', (event) => {
+                const target = event.target.closest('.tag-suggestion');
+                if (target) {
+                    const skill = target.dataset.skill;
+                    if (selectedSoftwareSkills.has(skill)) {
+                        selectedSoftwareSkills.delete(skill);
+                    } else {
+                        selectedSoftwareSkills.add(skill);
+                    }
+                    renderSoftwareTags();
+                }
+            });
+            
+            // Add software from manual input
+            function addSoftwareFromInput() {
+                const skill = softwareManualInput.value.trim();
+                if (skill && !selectedSoftwareSkills.has(skill)) {
+                    selectedSoftwareSkills.add(skill);
+                    renderSoftwareTags();
+                    softwareManualInput.value = '';
+                }
+            }
+            
+            addSoftwareBtn.addEventListener('click', addSoftwareFromInput);
+            softwareManualInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSoftwareFromInput();
+                }
+            });
+
+            // --- Technical Skills Tagging Logic ---
+            function renderTechnicalTags() {
+                technicalContainer.innerHTML = '';
+                selectedTechnicalSkills.forEach((proficiency, skill) => {
+                    const tagWrapper = document.createElement('div');
+                    tagWrapper.style.display = 'flex';
+                    tagWrapper.style.alignItems = 'center';
+                    
+                    const tag = createTagElement(skill, () => {
+                        selectedTechnicalSkills.delete(skill);
+                        renderTechnicalTags();
+                    });
+
+                    const select = document.createElement('select');
+                    select.className = 'proficiency-select';
+                    select.innerHTML = `
+                        <option value="1" ${proficiency === 1 ? 'selected' : ''}>Beginner</option>
+                        <option value="2" ${proficiency === 2 ? 'selected' : ''}>Intermediate</option>
+                        <option value="3" ${proficiency === 3 ? 'selected' : ''}>Advanced</option>
+                        <option value="4" ${proficiency === 4 ? 'selected' : ''}>Expert</option>
+                    `;
+                    select.onchange = (e) => selectedTechnicalSkills.set(skill, parseInt(e.target.value));
+
+                    tagWrapper.appendChild(tag);
+                    tagWrapper.appendChild(select);
+                    technicalContainer.appendChild(tagWrapper);
+                });
+
+                technicalSuggestions.querySelectorAll('.tag-suggestion').forEach(pill => {
+                    pill.classList.toggle('selected', selectedTechnicalSkills.has(pill.dataset.skill));
+                });
+            }
+
+            // Use event delegation on the parent container
+            technicalSuggestions.addEventListener('click', (event) => {
+                const target = event.target.closest('.tag-suggestion');
+                if (target && !selectedTechnicalSkills.has(target.dataset.skill)) {
+                    const skill = target.dataset.skill;
+                    selectedTechnicalSkills.set(skill, 1); // Default proficiency
+                    renderTechnicalTags();
+                }
+            });
+            
+            // Add technical skill from manual input
+            function addTechnicalFromInput() {
+                const skill = technicalManualInput.value.trim();
+                if (skill && !selectedTechnicalSkills.has(skill)) {
+                    selectedTechnicalSkills.set(skill, 1); // Default proficiency
+                    renderTechnicalTags();
+                    technicalManualInput.value = '';
+                }
+            }
+            
+            addTechnicalBtn.addEventListener('click', addTechnicalFromInput);
+            technicalManualInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addTechnicalFromInput();
+                }
+            });
+
+            // --- FORM SUBMISSION LOGIC ---
+            const statusMessage = document.getElementById('status-message');
+            function showMessage(text, type) {
+                statusMessage.textContent = text;
+                statusMessage.className = `show ${type}`;
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showMessage('Submitting...', 'info');
+                const formData = new FormData(form);
+                
+                const finalSpecializations = formData.get('specializations');
+
+                const editorData = { 
+                    name: formData.get('name'), 
+                    email: formData.get('email'), 
+                    phone: formData.get('phone'), 
+                    location: formData.get('location'), 
+                    languages: formData.get('languages'), 
+                    years_experience: parseInt(formData.get('years_experience')), 
+                    portfolio_link: formData.get('portfolio_link'), 
+                    linkedin_url: formData.get('linkedin_url'), 
+                    specializations: finalSpecializations, 
+                    most_proficient_sw: formData.get('most_proficient_sw'), 
+                    hourly_rate: formData.get('hourly_rate') ? parseInt(formData.get('hourly_rate')) : null, 
+                    day_rate: formData.get('day_rate') ? parseInt(formData.get('day_rate')) : null, 
+                    preferred_work: formData.get('preferred_work') 
+                };
+
+                // If Supabase is not configured, just show a success message
+                if (!supabase || SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+                    console.log('Form data (demo mode):', editorData);
+                    console.log('Software skills:', Array.from(selectedSoftwareSkills));
+                    console.log('Technical skills:', Array.from(selectedTechnicalSkills.entries()));
+                    
+                    showMessage('Thank you! Your profile has been submitted successfully (demo mode).', 'success');
+                    form.reset();
+                    selectedSoftwareSkills.clear();
+                    selectedTechnicalSkills.clear();
+                    renderSoftwareTags();
+                    renderTechnicalTags();
+                    updateProgress();
+                    return;
+                }
+                
+                // Real submission to Supabase
+                try {
+                    const { data: insertedEditor, error: editorError } = await supabase.from('editors').insert([editorData]).select();
+                    
+                    if (editorError) { 
+                        console.error('Error inserting editor:', editorError); 
+                        showMessage('Error submitting details. Please try again.', 'error'); 
+                        return; 
+                    }
+                    
+                    const newEditorId = insertedEditor[0].id;
+                    const skillsToInsert = [];
+                    
+                    selectedSoftwareSkills.forEach(skill => { 
+                        skillsToInsert.push({ editor_id: newEditorId, skill_name: skill, proficiency: 5 }); 
+                    });
+                    
+                    selectedTechnicalSkills.forEach((proficiency, skill) => { 
+                        skillsToInsert.push({ editor_id: newEditorId, skill_name: skill, proficiency: proficiency }); 
+                    });
+                    
+                    if (skillsToInsert.length > 0) {
+                        const { error: skillsError } = await supabase.from('editor_skills').insert(skillsToInsert);
+                        if (skillsError) { 
+                            console.error('Error inserting skills:', skillsError); 
+                            showMessage('Profile saved, but there was an issue saving some skills.', 'error'); 
+                            return; 
+                        }
+                    }
+                    
+                    showMessage('Thank you! Your profile has been submitted successfully.', 'success');
+                    form.reset();
+                    selectedSoftwareSkills.clear();
+                    selectedTechnicalSkills.clear();
+                    renderSoftwareTags();
+                    renderTechnicalTags();
+                    updateProgress();
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    showMessage('Error submitting details. Please try again.', 'error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
