@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EditorConnect - Team Editor Showcase</title>
+    <title>Profile Submission</title>
     
     <!-- Google Fonts: Inter for a modern, clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Bootstrap for responsive components -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         /* --- Global Styles & Modern Color Palette --- */
@@ -29,7 +26,6 @@
             --text-secondary: #8b949e;
             --border-color: #30363d;
             --input-bg: rgba(13, 17, 23, 0.5);
-            --card-header: linear-gradient(135deg, var(--accent-cyan), #0077b6);
         }
 
         body {
@@ -40,159 +36,6 @@
             padding: 0;
             line-height: 1.7;
             overflow-x: hidden;
-        }
-
-        /* Lockscreen Styles */
-        .lockscreen-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--bg-dark), #161b22, #1a1f2e);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .lockscreen-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
-            z-index: -1;
-            animation: float 20s infinite ease-in-out;
-        }
-        .lockscreen-orb1 { width: 300px; height: 300px; background-color: var(--primary-green); top: -150px; right: -150px; animation-delay: 0s; }
-        .lockscreen-orb2 { width: 250px; height: 250px; background-color: var(--accent-cyan); bottom: -125px; left: -125px; animation-delay: 5s; }
-        .lockscreen-orb3 { width: 200px; height: 200px; background-color: var(--accent-purple); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 10s; }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        .lockscreen-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            width: 100%;
-            max-width: 400px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .lockscreen-logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .lockscreen-logo i {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 15px;
-        }
-
-        .lockscreen-title {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary-green), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .lockscreen-subtitle {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .form-control {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            border-radius: 8px;
-            padding: 12px 15px;
-            width: 100%;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control:focus {
-            background: var(--input-bg);
-            border-color: var(--primary-green);
-            color: var(--text-primary);
-            box-shadow: 0 0 0 0.25rem rgba(168, 236, 4, 0.25);
-            outline: none;
-        }
-
-        .btn-login {
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(168, 236, 4, 0.4);
-        }
-
-        .error-message {
-            background: rgba(114, 9, 183, 0.2);
-            border: 1px solid var(--accent-purple);
-            color: var(--accent-purple);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-            animation: shake 0.5s;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-
-        .main-content {
-            display: none;
         }
 
         .bg-animation {
@@ -207,6 +50,12 @@
             animation: gradientShift 15s ease infinite;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -218,1772 +67,704 @@
         .orb1 { width: 300px; height: 300px; background-color: var(--primary-green); top: -150px; right: -150px; animation-delay: 0s; }
         .orb2 { width: 250px; height: 250px; background-color: var(--accent-cyan); bottom: -125px; left: -125px; animation-delay: 5s; }
         .orb3 { width: 200px; height: 200px; background-color: var(--accent-purple); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 10s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--bg-card);
+            padding: 0;
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.6s ease-out;
         }
-
-        header {
-            text-align: center;
-            padding: 60px 0;
-            animation: slideDown 0.8s ease-out;
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .header {
+            text-align: center;
+            padding: 40px 50px 20px 50px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo img {
+            max-width: 180px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
         h1 {
-            font-size: 48px;
+            font-size: 32px;
             font-weight: 700;
             background: linear-gradient(to right, var(--primary-green), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 0 0 20px 0;
+            margin: 15px 0 5px 0;
+        }
+        .header p {
+            font-size: 16px;
+            color: var(--text-secondary);
         }
 
-        .subtitle {
+        .form-content {
+            padding: 20px 50px 40px 50px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-green), var(--accent-cyan));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 0.5s ease forwards;
+        }
+        .form-section:nth-child(2) { animation-delay: 0.1s; }
+        .form-section:nth-child(3) { animation-delay: 0.2s; }
+        .form-section:nth-child(4) { animation-delay: 0.3s; }
+        .form-section:nth-child(5) { animation-delay: 0.4s; }
+        @keyframes fadeInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
             font-size: 20px;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--primary-green);
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-green);
-        }
-
-        /* Database Info Section */
-        .db-info {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .db-status {
-            display: flex;
-            align-items: center;
-        }
-
-        .db-status-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--primary-green);
-            margin-right: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .db-info-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .db-stats {
-            display: flex;
-            gap: 20px;
-        }
-
-        .db-stat {
-            text-align: center;
-        }
-
-        .db-stat-value {
-            font-size: 24px;
             font-weight: 600;
-            color: var(--accent-cyan);
-        }
-
-        .db-stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* Loading Spinner */
-        .loading-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(0, 180, 216, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--accent-cyan);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Filter Section */
-        .filter-section {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            margin-bottom: 30px;
-        }
-
-        .filter-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
             color: var(--text-primary);
-        }
-
-        .filter-group {
             margin-bottom: 20px;
         }
+        .section-title i {
+            margin-right: 12px;
+            color: var(--primary-green);
+        }
 
-        .filter-group label {
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .form-select {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            border-radius: 8px;
-            padding: 10px 15px;
-        }
-
-        .form-select:focus {
-            background: var(--input-bg);
-            border-color: var(--primary-green);
-            color: var(--text-primary);
-            box-shadow: 0 0 0 0.25rem rgba(168, 236, 4, 0.25);
-        }
-
-        /* Editor Cards */
-        .editor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .editor-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .editor-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-        }
-
-        .editor-header {
-            background: var(--card-header);
-            padding: 20px;
-            position: relative;
-        }
-
-        .editor-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--bg-dark);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .editor-name {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .editor-location {
-            display: flex;
-            align-items: center;
-            color: white;
-            font-weight: 500;
-        }
-
-        .editor-body {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .editor-info {
-            margin-bottom: 15px;
-        }
-
-        .editor-info-item {
-            display: flex;
-            margin-bottom: 8px;
-        }
-
-        .editor-info-label {
-            width: 120px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .editor-info-value {
-            flex: 1;
-        }
-
-        .editor-skills {
-            margin-top: auto;
-        }
-
-        .editor-skills-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 15px;
             color: var(--text-primary);
         }
-
-        .skill-item {
-            margin-bottom: 8px;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3px;
-            font-size: 14px;
-        }
-
-        .skill-bar {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            border-radius: 3px;
-        }
-
-        .editor-footer {
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .editor-rate {
-            background: linear-gradient(135deg, var(--accent-purple), #560bad);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .editor-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-editor {
-            padding: 8px 15px;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-view {
-            background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
-            color: white;
-        }
-
-        .btn-view:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
-        }
-
-        .btn-connect {
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
-            color: var(--bg-dark);
-        }
-
-        .btn-connect:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(168, 236, 4, 0.4);
-        }
-
-        /* Rating and Notes Section */
-        .editor-rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .rating-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-right: 10px;
-            width: 60px;
-        }
-
-        .rating-stars {
-            display: flex;
-            gap: 5px;
-        }
-
-        .rating-star {
-            color: #444;
-            cursor: pointer;
-            font-size: 16px;
-            transition: color 0.2s;
-        }
-
-        .rating-star.filled {
-            color: #ffc107;
-        }
-
-        .rating-star:hover {
-            color: #ffc107;
-        }
-
-        .editor-note {
-            margin-top: 10px;
-        }
-
-        .note-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .note-text {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 14px;
-            color: var(--text-primary);
-            min-height: 60px;
-            resize: none;
+        input[type="text"], input[type="email"], input[type="number"], input[type="url"], textarea, select {
             width: 100%;
-        }
-
-        .note-text:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
-        }
-
-        .delete-note {
-            background: none;
-            border: none;
-            color: var(--accent-purple);
-            cursor: pointer;
-            font-size: 12px;
-            padding: 2px 5px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        .delete-note:hover {
-            background-color: rgba(114, 9, 183, 0.2);
-        }
-
-        /* Location suggestions */
-        .location-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--bg-card);
+            padding: 12px 15px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-            display: none;
-        }
-
-        .location-suggestion {
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .location-suggestion:hover {
-            background-color: rgba(0, 180, 216, 0.2);
-        }
-
-        .location-suggestion.active {
-            background-color: rgba(0, 180, 216, 0.3);
-        }
-
-        /* Modal */
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
-            border-bottom: 1px solid var(--border-color);
-            border-radius: 16px 16px 0 0;
-        }
-
-        .modal-title {
-            color: white;
-            font-weight: 600;
-        }
-
-        .btn-close {
-            filter: invert(1);
-        }
-
-        .modal-body {
+            box-sizing: border-box;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--input-bg);
             color: var(--text-primary);
+            transition: all 0.3s ease;
         }
-
-        .profile-section {
-            margin-bottom: 25px;
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(168, 236, 4, 0.2);
+            background-color: var(--input-bg);
         }
-
-        .profile-section h5 {
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .profile-info {
-            display: flex;
-            margin-bottom: 10px;
-        }
-
-        .profile-label {
-            width: 150px;
+        .helper-text {
+            font-size: 13px;
             color: var(--text-secondary);
-        }
-
-        .profile-value {
-            flex: 1;
+            margin-top: 6px;
         }
 
         .tag-container {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 50px;
+            cursor: text;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            align-items: center;
+            background-color: var(--input-bg);
+            transition: all 0.3s ease;
         }
-
+        .tag-container:focus-within {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(168, 236, 4, 0.1);
+        }
         .tag {
             background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
             color: var(--bg-dark);
             padding: 6px 12px;
             border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             font-size: 14px;
             font-weight: 500;
+            animation: tagPop 0.3s ease;
         }
-
-        .tag-cyan {
-            background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
-            color: white;
+        @keyframes tagPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-
-        .tag-purple {
-            background: linear-gradient(135deg, var(--accent-purple), #560bad);
-            color: white;
+        .tag .remove {
+            cursor: pointer;
+            font-weight: bold;
+            opacity: 0.8;
+            transition: opacity 0.2s, transform 0.2s;
         }
-
-        /* Toast Notification */
-        .toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1050;
+        .tag .remove:hover { opacity: 1; transform: scale(1.2); }
+        .tag-suggestions {
+            margin-top: 12px;
         }
-
-        .custom-toast {
-            background: var(--bg-card);
+        .tag-suggestion {
+            display: inline-block;
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            margin: 4px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            margin-bottom: 15px;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .tag-suggestion:hover {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(168, 236, 4, 0.3);
+        }
+        .tag-suggestion.selected {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            border-color: transparent;
+        }
+        .proficiency-select {
+            margin-left: 10px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        
+        .manual-input-container {
             display: flex;
-            align-items: center;
-            min-width: 300px;
-            animation: slideIn 0.3s ease-out;
+            margin-top: 10px;
+            gap: 8px;
         }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .toast-icon {
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
-
-        .toast-success .toast-icon {
-            color: var(--primary-green);
-        }
-
-        .toast-error .toast-icon {
-            color: var(--accent-purple);
-        }
-
-        .toast-content {
+        .manual-input {
             flex-grow: 1;
         }
-
-        .toast-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .toast-message {
+        .add-btn {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             font-size: 14px;
-            color: var(--text-secondary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+        }
+        .add-btn i {
+            margin-right: 5px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .editor-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 36px;
-            }
-            
-            .db-stats {
-                display: none;
-            }
+        .submit-btn-wrapper {
+            text-align: center;
+            margin-top: 30px;
         }
+        button {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+        button:hover::before {
+            left: 100%;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(168, 236, 4, 0.4);
+        }
+
+        #status-message {
+            text-align: center;
+            margin-top: 25px;
+            font-weight: 500;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #status-message.show { display: block; }
+        #status-message.success { background-color: #1e3a2e; color: #a7d3c1; border: 1px solid #2a5a45; }
+        #status-message.error { background-color: #3a1e1e; color: #d3a7a7; border: 1px solid #5a2a2a; }
+        #status-message.info { background-color: #1e2d3a; color: #a7c1d3; border: 1px solid #2a3d5a; }
     </style>
 </head>
 <body>
-    <!-- Lockscreen -->
-    <div class="lockscreen-container" id="lockscreen">
-        <div class="lockscreen-orb lockscreen-orb1"></div>
-        <div class="lockscreen-orb lockscreen-orb2"></div>
-        <div class="lockscreen-orb lockscreen-orb3"></div>
-        
-        <div class="lockscreen-card">
-            <div class="lockscreen-logo">
-                <i class="fas fa-video"></i>
-                <h2 class="lockscreen-title">HeliosEditorConnect</h2>
-                <p class="lockscreen-subtitle">Enter your credentials to access the editor database</p>
+
+    <div class="bg-animation"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="txt in down.png" alt="INNOVATES Logo">
             </div>
-            
-            <div class="error-message" id="loginError">
-                <i class="fas fa-exclamation-triangle me-2"></i>
-                Invalid username or password. Please try again.
+            <h1>Join the Helios Crew!</h1>
+            <p>Your skills deserve the spotlight. Join our network and shape visual stories with us.</p>
+        </div>
+
+        <div class="form-content">
+            <div class="progress-bar">
+                <div class="progress" id="form-progress"></div>
             </div>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" class="form-control" placeholder="Enter your username" required="">
+
+            <form id="editor-form">
+                <!-- Category 1: Core Contact & Logistics -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-user"></i> 1. Core Contact & Logistics</div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location (City, State)</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Kannur, Kerala" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="languages">Languages You Handle</label>
+                        <input type="text" id="languages" name="languages" placeholder="e.g., English (Native), Hindi (Fluent)" required>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required="">
+
+                <!-- Category 2: Professional Profile & Portfolio -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-briefcase"></i> 2. Professional Profile & Portfolio</div>
+                    <div class="form-group">
+                        <label for="years_experience">Years of Experience</label>
+                        <input type="number" id="years_experience" name="years_experience" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio_link">Portfolio / Previous Work Link</label>
+                        <input type="url" id="portfolio_link" name="portfolio_link" required>
+                        <p class="helper-text">Please provide a link to your portfolio, a showreel, or a cloud folder (like Google Drive/Dropbox) with examples of your work.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin_url">LinkedIn Profile URL (Optional)</label>
+                        <input type="url" id="linkedin_url" name="linkedin_url">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specializations">Specialization / Niche</label>
+                        <input type="text" id="specializations" name="specializations" placeholder="e.g., True-Crime Documentary, High-End Gaming Montages, Corporate Explainer Videos" required>
+                        <p class="helper-text">Please list your specializations, separated by commas.</p>
+                    </div>
                 </div>
-                
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-lock me-2"></i>
-                    Unlock Database
-                </button>
+
+                <!-- Category 3: Skills & Proficiency -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-tools"></i> 3. Skills & Proficiency</div>
+                    <div class="form-group">
+                        <label>Software Proficiency</label>
+                        <p class="helper-text">Click to select all software you are familiar with, or add your own.</p>
+                        <div id="software-tags-container" class="tag-container"></div>
+                        <div id="software-suggestions" class="tag-suggestions">
+                            <span class="tag-suggestion" data-skill="Adobe Premiere Pro">Adobe Premiere Pro</span>
+                            <span class="tag-suggestion" data-skill="Final Cut Pro">Final Cut Pro</span>
+                            <span class="tag-suggestion" data-skill="DaVinci Resolve">DaVinci Resolve</span>
+                            <span class="tag-suggestion" data-skill="Avid Media Composer">Avid Media Composer</span>
+                            <span class="tag-suggestion" data-skill="Adobe After Effects">Adobe After Effects</span>
+                            <span class="tag-suggestion" data-skill="Adobe Audition">Adobe Audition</span>
+                        </div>
+                        <div class="manual-input-container">
+                            <input type="text" id="software-manual-input" class="manual-input" placeholder="Add custom software...">
+                            <button type="button" id="add-software-btn" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="most_proficient_sw">Which software are you MOST proficient in?</label>
+                        <select id="most_proficient_sw" name="most_proficient_sw">
+                            <option value="">-- First select your software above --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Technical Skills</label>
+                        <p class="helper-text">Click to select all skills you possess, or add your own. You can then rate your proficiency.</p>
+                        <div id="technical-tags-container" class="tag-container"></div>
+                        <div id="technical-suggestions" class="tag-suggestions">
+                            <span class="tag-suggestion" data-skill="Color Grading">Color Grading</span>
+                            <span class="tag-suggestion" data-skill="Motion Graphics (Basic)">Motion Graphics (Basic)</span>
+                            <span class="tag-suggestion" data-skill="Motion Graphics (Advanced)">Motion Graphics (Advanced)</span>
+                            <span class="tag-suggestion" data-skill="Audio Mixing / Sound Design">Audio Mixing / Sound Design</span>
+                            <span class="tag-suggestion" data-skill="Proxy Workflow">Proxy Workflow</span>
+                            <span class="tag-suggestion" data-skill="Multi-Cam Editing">Multi-Cam Editing</span>
+                            <span class="tag-suggestion" data-skill="Green Screen Keying">Green Screen Keying</span>
+                        </div>
+                        <div class="manual-input-container">
+                            <input type="text" id="technical-manual-input" class="manual-input" placeholder="Add custom technical skill...">
+                            <button type="button" id="add-technical-btn" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Business & Availability -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-dollar-sign"></i> 4. Business & Availability</div>
+                    <div class="form-group">
+                        <label for="hourly_rate">Hourly Rate (Rs/hr, Optional)</label>
+                        <input type="number" id="hourly_rate" name="hourly_rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_rate">Day Rate (Rs/day, Optional)</label>
+                        <input type="number" id="day_rate" name="day_rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred_work">What kind of work are you looking for?</label>
+                        <textarea id="preferred_work" name="preferred_work" rows="4" required></textarea>
+                        <p class="helper-text">Describe your ideal projects, clients, or work style.</p>
+                    </div>
+                </div>
+
+                <div class="submit-btn-wrapper">
+                    <button type="submit">Submit My Profile</button>
+                </div>
             </form>
+            <div id="status-message"></div>
         </div>
     </div>
 
-    <!-- Main Content (Hidden until authenticated) -->
-    <div class="main-content" id="mainContent">
-        <div class="bg-animation"></div>
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="orb orb3"></div>
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="#"><i class="fas fa-video me-2"></i>HeliosEditorConnect</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i>Editors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="refreshData"><i class="fas fa-sync-alt me-1"></i>Refresh</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="container">
-            <header>
-                <h1>EditorConnect</h1>
-                <p class="subtitle">Editors data from Helios Crew!</p>
-            </header>
-
-            <!-- Database Info Section -->
-            <div class="db-info">
-                <div class="db-status">
-                    <div class="db-status-indicator" id="dbStatusIndicator"></div>
-                    <div class="db-info-text" id="dbStatusText">Connecting to Supabase Database...</div>
-                </div>
-                <div class="db-stats">
-                    <div class="db-stat">
-                        <div class="db-stat-value" id="editorCount">0</div>
-                        <div class="db-stat-label">Editors</div>
-                    </div>
-                    <div class="db-stat">
-                        <div class="db-stat-value" id="skillCount">0</div>
-                        <div class="db-stat-label">Skills</div>
-                    </div>
-                    <div class="db-stat">
-                        <div class="db-stat-value" id="locationCount">0</div>
-                        <div class="db-stat-label">Locations</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Filter Section -->
-            <div class="filter-section">
-                <h2 class="filter-title"><i class="fas fa-filter me-2"></i>Filter Editors</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="filter-group position-relative">
-                            <label for="locationFilter">Location</label>
-                            <input type="text" class="form-control" id="locationFilter" placeholder="Enter location">
-                            <div class="location-suggestions" id="locationSuggestions"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <label for="specializationFilter">Specialization</label>
-                            <select class="form-select" id="specializationFilter">
-                                <option value="">All Specializations</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <label for="softwareFilter">Software</label>
-                            <select class="form-select" id="softwareFilter">
-                                <option value="">All Software</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <label for="experienceFilter">Years of Experience</label>
-                            <select class="form-select" id="experienceFilter">
-                                <option value="">All Experience Levels</option>
-                                <option value="1">1+ Years</option>
-                                <option value="3">3+ Years</option>
-                                <option value="5">5+ Years</option>
-                                <option value="10">10+ Years</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <label for="rateFilter">Hourly Rate</label>
-                            <select class="form-select" id="rateFilter">
-                                <option value="">All Rates</option>
-                                <option value="25">Under $25/hr</option>
-                                <option value="50">$25 - $50/hr</option>
-                                <option value="75">$50 - $75/hr</option>
-                                <option value="100">$75 - $100/hr</option>
-                                <option value="101">Over $100/hr</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <label for="workTypeFilter">Preferred Work Type</label>
-                            <select class="form-select" id="workTypeFilter">
-                                <option value="">All Work Types</option>
-                                <option value="Remote">Remote</option>
-                                <option value="On-site">On-site</option>
-                                <option value="Hybrid">Hybrid</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn-submit" id="applyFilters"><i class="fas fa-check me-2"></i>Apply Filters</button>
-                        <button class="btn-submit" id="resetFilters" style="background: linear-gradient(135deg, var(--accent-purple), #560bad);"><i class="fas fa-redo me-2"></i>Reset Filters</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Loading State -->
-            <div class="loading-container" id="loadingContainer">
-                <div class="spinner"></div>
-            </div>
-
-            <!-- Editor Cards -->
-            <div class="editor-grid" id="editorGrid" style="display: none;">
-                <!-- Editor cards will be dynamically inserted here -->
-            </div>
-        </div>
-
-        <!-- Editor Profile Modal -->
-        <div class="modal fade" id="editorProfileModal" tabindex="-1" aria-labelledby="editorProfileModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editorProfileModalLabel">Editor Profile</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="editorProfileContent">
-                        <!-- Profile content will be dynamically inserted here -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" id="modalConnectBtn">
-                            <i class="fab fa-whatsapp me-2"></i>Connect on WhatsApp
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Toast Container -->
-        <div class="toast-container" id="toastContainer"></div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <!-- Supabase JS SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    
     <script>
-        // Authentication credentials
-        const VALID_USERNAME = 'Helios';
-        const VALID_PASSWORD = 'abhiram';
-        
-        // Check if user is already authenticated
-        document.addEventListener('DOMContentLoaded', function() {
-            if (sessionStorage.getItem('authenticated') === 'true') {
-                showMainContent();
-                initializeApp();
-            } else {
-                setupLockscreen();
-            }
-        });
-        
-        // Setup lockscreen functionality
-        function setupLockscreen() {
-            const loginForm = document.getElementById('loginForm');
-            const usernameInput = document.getElementById('username');
-            const passwordInput = document.getElementById('password');
-            const loginError = document.getElementById('loginError');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURATION ---
+            // Note: Replace these with your actual Supabase credentials
+            const SUPABASE_URL = 'https://weiqjcmkkeuqxodkoqpd.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlaXFqY21ra2V1cXhvZGtvcXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTMxMzgsImV4cCI6MjA3NzMyOTEzOH0.9hvIDbStGyFStnG0FJl_9w0LSbzcru9tf6drJ_uAKts';
             
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const username = usernameInput.value.trim();
-                const password = passwordInput.value;
-                
-                if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-                    // Authentication successful
-                    sessionStorage.setItem('authenticated', 'true');
-                    loginError.style.display = 'none';
-                    
-                    // Transition to main content
-                    document.getElementById('lockscreen').style.opacity = '0';
-                    setTimeout(() => {
-                        document.getElementById('lockscreen').style.display = 'none';
-                        showMainContent();
-                        initializeApp();
-                    }, 500);
-                } else {
-                    // Authentication failed
-                    loginError.style.display = 'block';
-                    usernameInput.value = '';
-                    passwordInput.value = '';
-                    usernameInput.focus();
-                }
-            });
-        }
-        
-        // Show main content after successful authentication
-        function showMainContent() {
-            document.getElementById('mainContent').style.display = 'block';
-            document.getElementById('lockscreen').style.display = 'none';
-            
-            // Setup logout functionality
-            document.getElementById('logoutBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                sessionStorage.removeItem('authenticated');
-                location.reload();
-            });
-        }
-        
-        // Initialize the main application
-        function initializeApp() {
             // Initialize Supabase client
-            const supabaseUrl = 'https://weiqjcmkkeuqxodkoqpd.supabase.co';
-            const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlaXFqY21ra2V1cXhvZGtvcXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTMxMzgsImV4cCI6MjA3NzMyOTEzOH0.9hvIDbStGyFStnG0FJl_9w0LSbzcru9tf6drJ_uAKts';
-            const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-            // State management
-            let editorsData = [];
-            let filteredEditors = [];
-            let currentEditor = null;
-            let selectedLocationIndex = -1;
-            let uniqueLocations = [];
-            let uniqueSpecializations = [];
-            let uniqueSoftware = [];
-            
-            // Load saved ratings and notes from localStorage
-            function loadSavedData() {
-                const savedRatings = localStorage.getItem('editorRatings');
-                const savedNotes = localStorage.getItem('editorNotes');
-                
-                return {
-                    ratings: savedRatings ? JSON.parse(savedRatings) : {},
-                    notes: savedNotes ? JSON.parse(savedNotes) : {}
-                };
-            }
-            
-            // Save ratings to localStorage
-            function saveRating(editorId, rating) {
-                const savedData = loadSavedData();
-                savedData.ratings[editorId] = rating;
-                localStorage.setItem('editorRatings', JSON.stringify(savedData.ratings));
-            }
-            
-            // Save note to localStorage
-            function saveNote(editorId, note) {
-                const savedData = loadSavedData();
-                savedData.notes[editorId] = note;
-                localStorage.setItem('editorNotes', JSON.stringify(savedData.notes));
-            }
-            
-            // Delete note from localStorage
-            function deleteNote(editorId) {
-                const savedData = loadSavedData();
-                delete savedData.notes[editorId];
-                localStorage.setItem('editorNotes', JSON.stringify(savedData.notes));
+            let supabase;
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            } catch (error) {
+                console.warn('Supabase client not initialized. Form will work in demo mode.', error);
             }
 
-            // Fetch editors data from Supabase
-            async function fetchEditorsData() {
-                try {
-                    // Update status to connecting
-                    updateDatabaseStatus('Connecting to Supabase Database...', 'connecting');
-                    
-                    // Fetch editors with their skills
-                    const { data: editors, error: editorsError } = await supabase
-                        .from('editors')
-                        .select('*');
-                    
-                    if (editorsError) {
-                        throw editorsError;
-                    }
-                    
-                    // Fetch skills for each editor
-                    const editorsWithSkills = await Promise.all(
-                        editors.map(async (editor) => {
-                            const { data: skills, error: skillsError } = await supabase
-                                .from('editor_skills')
-                                .select('*')
-                                .eq('editor_id', editor.id);
-                            
-                            if (skillsError) {
-                                console.error('Error fetching skills for editor', editor.id, skillsError);
-                                return { ...editor, skills: [] };
-                            }
-                            
-                            return { ...editor, skills };
-                        })
-                    );
-                    
-                    // Update state
-                    editorsData = editorsWithSkills;
-                    filteredEditors = [...editorsData];
-                    
-                    // Extract unique values for filters
-                    uniqueLocations = [...new Set(editorsData.map(editor => editor.location).filter(Boolean))];
-                    uniqueSpecializations = [...new Set(
-                        editorsData.flatMap(editor => 
-                            editor.specializations ? editor.specializations.split(',').map(s => s.trim()) : []
-                        )
-                    )];
-                    uniqueSoftware = [...new Set(editorsData.map(editor => editor.most_proficient_sw).filter(Boolean))];
-                    
-                    // Update UI
-                    updateDatabaseStatus('Connected to Supabase Database', 'connected');
-                    updateDatabaseStats();
-                    populateFilterOptions();
-                    renderEditors();
-                    
-                    // Hide loading, show editor grid
-                    document.getElementById('loadingContainer').style.display = 'none';
-                    document.getElementById('editorGrid').style.display = 'grid';
-                    
-                    showToast('Data Loaded', `Successfully loaded ${editorsData.length} editors from the database.`, 'success');
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                    updateDatabaseStatus('Failed to connect to database', 'error');
-                    showToast('Connection Error', 'Failed to load data from Supabase. Please try again.', 'error');
-                    
-                    // Hide loading, show error message
-                    document.getElementById('loadingContainer').innerHTML = `
-                        <div class="text-center">
-                            <i class="fas fa-exclamation-triangle fa-3x mb-3 text-danger"></i>
-                            <h4>Failed to load data</h4>
-                            <p class="text-secondary">Please check your connection and try again.</p>
-                            <button class="btn btn-primary mt-3" onclick="fetchEditorsData()">
-                                <i class="fas fa-redo me-2"></i>Retry
-                            </button>
-                        </div>
-                    `;
-                }
+            // --- PROGRESS BAR ---
+            const form = document.getElementById('editor-form');
+            const progressBar = document.getElementById('form-progress');
+            const allInputs = form.querySelectorAll('input[required], textarea[required]');
+            function updateProgress() {
+                const filledInputs = Array.from(allInputs).filter(input => input.value.trim() !== '');
+                const progress = (filledInputs.length / allInputs.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            allInputs.forEach(input => input.addEventListener('input', updateProgress));
+            
+            // --- TAGGING SYSTEM LOGIC ---
+            const selectedSoftwareSkills = new Set();
+            const selectedTechnicalSkills = new Map();
+            const softwareContainer = document.getElementById('software-tags-container');
+            const softwareSuggestions = document.getElementById('software-suggestions');
+            const mostProficientDropdown = document.getElementById('most_proficient_sw');
+            const technicalContainer = document.getElementById('technical-tags-container');
+            const technicalSuggestions = document.getElementById('technical-suggestions');
+            
+            // Manual input elements
+            const softwareManualInput = document.getElementById('software-manual-input');
+            const addSoftwareBtn = document.getElementById('add-software-btn');
+            const technicalManualInput = document.getElementById('technical-manual-input');
+            const addTechnicalBtn = document.getElementById('add-technical-btn');
+
+            function createTagElement(text, onRemove) {
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.innerHTML = `${text} <span class="remove">&times;</span>`;
+                tag.querySelector('.remove').onclick = onRemove;
+                return tag;
             }
 
-            // Update database status
-            function updateDatabaseStatus(text, status) {
-                const statusIndicator = document.getElementById('dbStatusIndicator');
-                const statusText = document.getElementById('dbStatusText');
-                
-                statusText.textContent = text;
-                
-                if (status === 'connected') {
-                    statusIndicator.style.backgroundColor = 'var(--primary-green)';
-                } else if (status === 'connecting') {
-                    statusIndicator.style.backgroundColor = '#ffc107';
+            // --- Software Tagging Logic ---
+            function renderSoftwareTags() {
+                softwareContainer.innerHTML = '';
+                selectedSoftwareSkills.forEach(skill => {
+                    softwareContainer.appendChild(createTagElement(skill, () => {
+                        selectedSoftwareSkills.delete(skill);
+                        renderSoftwareTags();
+                    }));
+                });
+
+                softwareSuggestions.querySelectorAll('.tag-suggestion').forEach(pill => {
+                    pill.classList.toggle('selected', selectedSoftwareSkills.has(pill.dataset.skill));
+                });
+
+                mostProficientDropdown.innerHTML = '<option value="">-- Select your most proficient software --</option>';
+                if (selectedSoftwareSkills.size > 0) {
+                    mostProficientDropdown.disabled = false;
+                    selectedSoftwareSkills.forEach(skill => {
+                        const option = document.createElement('option');
+                        option.value = skill;
+                        option.textContent = skill;
+                        mostProficientDropdown.appendChild(option);
+                    });
                 } else {
-                    statusIndicator.style.backgroundColor = 'var(--accent-purple)';
+                    mostProficientDropdown.disabled = true;
                 }
             }
-
-            // Update database statistics
-            function updateDatabaseStats() {
-                const editorCount = editorsData.length;
-                const skillCount = editorsData.reduce((total, editor) => total + (editor.skills ? editor.skills.length : 0), 0);
-                const locationCount = uniqueLocations.length;
-                
-                document.getElementById('editorCount').textContent = editorCount;
-                document.getElementById('skillCount').textContent = skillCount;
-                document.getElementById('locationCount').textContent = locationCount;
+            
+            // Use event delegation on the parent container
+            softwareSuggestions.addEventListener('click', (event) => {
+                const target = event.target.closest('.tag-suggestion');
+                if (target) {
+                    const skill = target.dataset.skill;
+                    if (selectedSoftwareSkills.has(skill)) {
+                        selectedSoftwareSkills.delete(skill);
+                    } else {
+                        selectedSoftwareSkills.add(skill);
+                    }
+                    renderSoftwareTags();
+                }
+            });
+            
+            // Add software from manual input
+            function addSoftwareFromInput() {
+                const skill = softwareManualInput.value.trim();
+                if (skill && !selectedSoftwareSkills.has(skill)) {
+                    selectedSoftwareSkills.add(skill);
+                    renderSoftwareTags();
+                    softwareManualInput.value = '';
+                }
             }
-
-            // Populate filter options with data from database
-            function populateFilterOptions() {
-                // Populate specializations
-                const specializationFilter = document.getElementById('specializationFilter');
-                uniqueSpecializations.forEach(spec => {
-                    const option = document.createElement('option');
-                    option.value = spec;
-                    option.textContent = spec;
-                    specializationFilter.appendChild(option);
-                });
-                
-                // Populate software
-                const softwareFilter = document.getElementById('softwareFilter');
-                uniqueSoftware.forEach(sw => {
-                    const option = document.createElement('option');
-                    option.value = sw;
-                    option.textContent = sw;
-                    softwareFilter.appendChild(option);
-                });
-            }
-
-            // Setup event listeners
-            function setupEventListeners() {
-                document.getElementById('applyFilters').addEventListener('click', applyFilters);
-                document.getElementById('resetFilters').addEventListener('click', resetFilters);
-                document.getElementById('modalConnectBtn').addEventListener('click', connectOnWhatsApp);
-                document.getElementById('refreshData').addEventListener('click', function(e) {
+            
+            addSoftwareBtn.addEventListener('click', addSoftwareFromInput);
+            softwareManualInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
                     e.preventDefault();
-                    fetchEditorsData();
-                });
-                
-                // Location input event listeners
-                const locationInput = document.getElementById('locationFilter');
-                const locationSuggestions = document.getElementById('locationSuggestions');
-                
-                locationInput.addEventListener('input', function() {
-                    const value = this.value.toLowerCase();
-                    if (value.length > 0) {
-                        showLocationSuggestions(value);
-                    } else {
-                        locationSuggestions.style.display = 'none';
-                    }
-                    selectedLocationIndex = -1;
-                });
-                
-                locationInput.addEventListener('keydown', function(e) {
-                    const suggestions = locationSuggestions.querySelectorAll('.location-suggestion');
-                    
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        selectedLocationIndex = Math.min(selectedLocationIndex + 1, suggestions.length - 1);
-                        updateActiveSuggestion(suggestions);
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        selectedLocationIndex = Math.max(selectedLocationIndex - 1, -1);
-                        updateActiveSuggestion(suggestions);
-                    } else if (e.key === 'Enter') {
-                        e.preventDefault();
-                        if (selectedLocationIndex >= 0 && suggestions[selectedLocationIndex]) {
-                            selectLocation(suggestions[selectedLocationIndex].textContent);
-                        }
-                    } else if (e.key === 'Escape') {
-                        locationSuggestions.style.display = 'none';
-                        selectedLocationIndex = -1;
-                    }
-                });
-                
-                // Click outside to close suggestions
-                document.addEventListener('click', function(e) {
-                    if (!locationInput.contains(e.target) && !locationSuggestions.contains(e.target)) {
-                        locationSuggestions.style.display = 'none';
-                    }
-                });
-            }
-
-            // Show location suggestions
-            function showLocationSuggestions(query) {
-                const locationSuggestions = document.getElementById('locationSuggestions');
-                locationSuggestions.innerHTML = '';
-                
-                const filteredLocations = uniqueLocations.filter(location => 
-                    location.toLowerCase().includes(query)
-                );
-                
-                if (filteredLocations.length > 0) {
-                    filteredLocations.forEach(location => {
-                        const suggestion = document.createElement('div');
-                        suggestion.className = 'location-suggestion';
-                        suggestion.textContent = location;
-                        suggestion.addEventListener('click', function() {
-                            selectLocation(location);
-                        });
-                        locationSuggestions.appendChild(suggestion);
-                    });
-                    locationSuggestions.style.display = 'block';
-                } else {
-                    locationSuggestions.style.display = 'none';
+                    addSoftwareFromInput();
                 }
-            }
+            });
 
-            // Update active suggestion styling
-            function updateActiveSuggestion(suggestions) {
-                suggestions.forEach((suggestion, index) => {
-                    if (index === selectedLocationIndex) {
-                        suggestion.classList.add('active');
-                    } else {
-                        suggestion.classList.remove('active');
-                    }
-                });
-            }
+            // --- Technical Skills Tagging Logic ---
+            function renderTechnicalTags() {
+                technicalContainer.innerHTML = '';
+                selectedTechnicalSkills.forEach((proficiency, skill) => {
+                    const tagWrapper = document.createElement('div');
+                    tagWrapper.style.display = 'flex';
+                    tagWrapper.style.alignItems = 'center';
+                    
+                    const tag = createTagElement(skill, () => {
+                        selectedTechnicalSkills.delete(skill);
+                        renderTechnicalTags();
+                    });
 
-            // Select a location from suggestions
-            function selectLocation(location) {
-                document.getElementById('locationFilter').value = location;
-                document.getElementById('locationSuggestions').style.display = 'none';
-                selectedLocationIndex = -1;
-            }
-
-            // Render editor cards
-            function renderEditors() {
-                const container = document.getElementById('editorGrid');
-                container.innerHTML = '';
-
-                if (filteredEditors.length === 0) {
-                    container.innerHTML = `
-                        <div class="col-12">
-                            <div class="text-center py-5">
-                                <i class="fas fa-search fa-3x mb-3 text-secondary"></i>
-                                <h4>No editors found</h4>
-                                <p class="text-secondary">Try adjusting your filters to see more results.</p>
-                            </div>
-                        </div>
+                    const select = document.createElement('select');
+                    select.className = 'proficiency-select';
+                    select.innerHTML = `
+                        <option value="1" ${proficiency === 1 ? 'selected' : ''}>Beginner</option>
+                        <option value="2" ${proficiency === 2 ? 'selected' : ''}>Intermediate</option>
+                        <option value="3" ${proficiency === 3 ? 'selected' : ''}>Advanced</option>
+                        <option value="4" ${proficiency === 4 ? 'selected' : ''}>Expert</option>
                     `;
-                    return;
+                    select.onchange = (e) => selectedTechnicalSkills.set(skill, parseInt(e.target.value));
+
+                    tagWrapper.appendChild(tag);
+                    tagWrapper.appendChild(select);
+                    technicalContainer.appendChild(tagWrapper);
+                });
+
+                technicalSuggestions.querySelectorAll('.tag-suggestion').forEach(pill => {
+                    pill.classList.toggle('selected', selectedTechnicalSkills.has(pill.dataset.skill));
+                });
+            }
+
+            // Use event delegation on the parent container
+            technicalSuggestions.addEventListener('click', (event) => {
+                const target = event.target.closest('.tag-suggestion');
+                if (target && !selectedTechnicalSkills.has(target.dataset.skill)) {
+                    const skill = target.dataset.skill;
+                    selectedTechnicalSkills.set(skill, 1); // Default proficiency
+                    renderTechnicalTags();
                 }
-
-                // Get saved ratings and notes
-                const savedData = loadSavedData();
-
-                // Create editor cards
-                filteredEditors.forEach((editor, index) => {
-                    const card = createEditorCard(editor, savedData);
-                    card.style.animationDelay = `${index * 0.1}s`;
-                    container.appendChild(card);
-                });
-            }
-
-            // Create an editor card element
-            function createEditorCard(editor, savedData) {
-                const card = document.createElement('div');
-                card.className = 'editor-card';
-
-                const skills = (editor.skills || []).slice(0, 3).map(skill => `
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>${skill.skill_name}</span>
-                            <span>${skill.proficiency}/5</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: ${skill.proficiency * 20}%"></div>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Get saved rating and note for this editor
-                const savedRating = savedData.ratings[editor.id] || 0;
-                const savedNote = savedData.notes[editor.id] || '';
-
-                card.innerHTML = `
-                    <div class="editor-header">
-                        <div class="editor-avatar">${editor.name ? editor.name.split(' ').map(n => n[0]).join('') : 'ED'}</div>
-                        <div class="editor-name">${editor.name || 'Unknown Editor'}</div>
-                        <div class="editor-location">
-                            <i class="fas fa-map-marker-alt me-1"></i> ${editor.location || 'Unknown Location'}
-                        </div>
-                    </div>
-                    <div class="editor-body">
-                        <div class="editor-info">
-                            <div class="editor-info-item">
-                                <div class="editor-info-label">Specialization:</div>
-                                <div class="editor-info-value">${editor.specializations || 'Not specified'}</div>
-                            </div>
-                            <div class="editor-info-item">
-                                <div class="editor-info-label">Experience:</div>
-                                <div class="editor-info-value">${editor.years_experience ? editor.years_experience + ' years' : 'Not specified'}</div>
-                            </div>
-                            <div class="editor-info-item">
-                                <div class="editor-info-label">Software:</div>
-                                <div class="editor-info-value">${editor.most_proficient_sw || 'Not specified'}</div>
-                            </div>
-                            <div class="editor-info-item">
-                                <div class="editor-info-label">Work Type:</div>
-                                <div class="editor-info-value">${editor.preferred_work || 'Not specified'}</div>
-                            </div>
-                        </div>
-                        <div class="editor-skills">
-                            <div class="editor-skills-title">Top Skills</div>
-                            ${skills || '<p class="text-secondary">No skills listed</p>'}
-                        </div>
-                        
-                        <!-- Rating Section -->
-                        <div class="editor-rating">
-                            <div class="rating-label">Rating:</div>
-                            <div class="rating-stars" data-editor-id="${editor.id}">
-                                ${[1, 2, 3, 4, 5].map(star => 
-                                    `<i class="fas fa-star rating-star ${star <= savedRating ? 'filled' : ''}" data-rating="${star}"></i>`
-                                ).join('')}
-                            </div>
-                        </div>
-                        
-                        <!-- Note Section -->
-                        <div class="editor-note">
-                            <div class="note-label">
-                                <span>Note:</span>
-                                ${savedNote ? `<button class="delete-note" data-editor-id="${editor.id}"><i class="fas fa-trash"></i> Delete</button>` : ''}
-                            </div>
-                            <textarea class="note-text" data-editor-id="${editor.id}" placeholder="Add a note about this editor...">${savedNote}</textarea>
-                        </div>
-                    </div>
-                    <div class="editor-footer">
-                        <div class="editor-rate">$${editor.hourly_rate || '0'}/hr</div>
-                        <div class="editor-actions">
-                            <button class="btn-editor btn-view" data-id="${editor.id}">
-                                <i class="fas fa-eye me-1"></i>View
-                            </button>
-                            <button class="btn-editor btn-connect" data-id="${editor.id}">
-                                <i class="fab fa-whatsapp me-1"></i>Connect
-                            </button>
-                        </div>
-                    </div>
-                `;
-
-                // Add event listeners to buttons
-                const viewBtn = card.querySelector('.btn-view');
-                const connectBtn = card.querySelector('.btn-connect');
-
-                viewBtn.addEventListener('click', () => showEditorProfile(editor));
-                connectBtn.addEventListener('click', () => connectOnWhatsApp(editor));
-                
-                // Add event listeners to rating stars
-                const ratingStars = card.querySelectorAll('.rating-star');
-                ratingStars.forEach(star => {
-                    star.addEventListener('click', function() {
-                        const rating = parseInt(this.dataset.rating);
-                        const editorId = this.closest('.rating-stars').dataset.editorId;
-                        
-                        // Update UI
-                        ratingStars.forEach(s => {
-                            if (parseInt(s.dataset.rating) <= rating) {
-                                s.classList.add('filled');
-                            } else {
-                                s.classList.remove('filled');
-                            }
-                        });
-                        
-                        // Save to localStorage
-                        saveRating(editorId, rating);
-                        showToast('Rating Saved', `You rated this editor ${rating} stars.`, 'success');
-                    });
-                });
-                
-                // Add event listener to note textarea
-                const noteTextarea = card.querySelector('.note-text');
-                noteTextarea.addEventListener('input', function() {
-                    const editorId = this.dataset.editorId;
-                    const note = this.value;
-                    
-                    // Save to localStorage
-                    saveNote(editorId, note);
-                    
-                    // Show/hide delete button
-                    const deleteBtn = card.querySelector('.delete-note');
-                    if (note.trim()) {
-                        if (!deleteBtn) {
-                            const noteLabel = card.querySelector('.note-label');
-                            const newDeleteBtn = document.createElement('button');
-                            newDeleteBtn.className = 'delete-note';
-                            newDeleteBtn.dataset.editorId = editorId;
-                            newDeleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
-                            noteLabel.appendChild(newDeleteBtn);
-                            
-                            // Add event listener to new delete button
-                            newDeleteBtn.addEventListener('click', function() {
-                                const editorId = this.dataset.editorId;
-                                const noteTextarea = card.querySelector('.note-text');
-                                
-                                // Clear note
-                                noteTextarea.value = '';
-                                
-                                // Remove from localStorage
-                                deleteNote(editorId);
-                                
-                                // Remove delete button
-                                this.remove();
-                                
-                                showToast('Note Deleted', 'The note has been deleted.', 'success');
-                            });
-                        }
-                    } else if (deleteBtn) {
-                        deleteBtn.remove();
-                    }
-                });
-                
-                // Add event listener to delete button if it exists
-                const deleteBtn = card.querySelector('.delete-note');
-                if (deleteBtn) {
-                    deleteBtn.addEventListener('click', function() {
-                        const editorId = this.dataset.editorId;
-                        const noteTextarea = card.querySelector('.note-text');
-                        
-                        // Clear note
-                        noteTextarea.value = '';
-                        
-                        // Remove from localStorage
-                        deleteNote(editorId);
-                        
-                        // Remove delete button
-                        this.remove();
-                        
-                        showToast('Note Deleted', 'The note has been deleted.', 'success');
-                    });
+            });
+            
+            // Add technical skill from manual input
+            function addTechnicalFromInput() {
+                const skill = technicalManualInput.value.trim();
+                if (skill && !selectedTechnicalSkills.has(skill)) {
+                    selectedTechnicalSkills.set(skill, 1); // Default proficiency
+                    renderTechnicalTags();
+                    technicalManualInput.value = '';
                 }
-
-                return card;
             }
-
-            // Apply filters
-            function applyFilters() {
-                const location = document.getElementById('locationFilter').value.toLowerCase();
-                const specialization = document.getElementById('specializationFilter').value;
-                const software = document.getElementById('softwareFilter').value;
-                const experience = document.getElementById('experienceFilter').value;
-                const rate = document.getElementById('rateFilter').value;
-                const workType = document.getElementById('workTypeFilter').value;
-
-                filteredEditors = editorsData.filter(editor => {
-                    // Location filter
-                    if (location && editor.location && !editor.location.toLowerCase().includes(location)) {
-                        return false;
-                    }
-
-                    // Specialization filter
-                    if (specialization && editor.specializations && !editor.specializations.includes(specialization)) {
-                        return false;
-                    }
-
-                    // Software filter
-                    if (software && editor.most_proficient_sw !== software) {
-                        return false;
-                    }
-
-                    // Experience filter
-                    if (experience && editor.years_experience && editor.years_experience < parseInt(experience)) {
-                        return false;
-                    }
-
-                    // Rate filter
-                    if (rate && editor.hourly_rate) {
-                        const rateValue = parseInt(rate);
-                        if (rateValue === 101 && editor.hourly_rate <= 100) {
-                            return false;
-                        } else if (rateValue !== 101 && editor.hourly_rate > rateValue) {
-                            return false;
-                        }
-                    }
-
-                    // Work type filter
-                    if (workType && editor.preferred_work !== workType) {
-                        return false;
-                    }
-
-                    return true;
-                });
-
-                renderEditors();
-                showToast('Filters Applied', `Found ${filteredEditors.length} editors matching your criteria.`, 'success');
-            }
-
-            // Reset filters
-            function resetFilters() {
-                document.getElementById('locationFilter').value = '';
-                document.getElementById('specializationFilter').value = '';
-                document.getElementById('softwareFilter').value = '';
-                document.getElementById('experienceFilter').value = '';
-                document.getElementById('rateFilter').value = '';
-                document.getElementById('workTypeFilter').value = '';
-
-                filteredEditors = [...editorsData];
-                renderEditors();
-                showToast('Filters Reset', 'All filters have been cleared.', 'success');
-            }
-
-            // Show editor profile modal
-            function showEditorProfile(editor) {
-                currentEditor = editor;
-                
-                const specializations = editor.specializations ? editor.specializations.split(',').map(s => 
-                    `<span class="tag">${s.trim()}</span>`
-                ).join('') : '<span class="tag">Not specified</span>';
-
-                const skills = (editor.skills || []).map(skill => `
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>${skill.skill_name}</span>
-                            <span>${skill.proficiency}/5</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: ${skill.proficiency * 20}%"></div>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Get saved rating and note for this editor
-                const savedData = loadSavedData();
-                const savedRating = savedData.ratings[editor.id] || 0;
-                const savedNote = savedData.notes[editor.id] || '';
-
-                const profileContent = document.getElementById('editorProfileContent');
-                profileContent.innerHTML = `
-                    <div class="row">
-                        <div class="col-md-4 text-center mb-3">
-                            <div class="editor-avatar mx-auto" style="width: 120px; height: 120px; font-size: 3rem;">
-                                ${editor.name ? editor.name.split(' ').map(n => n[0]).join('') : 'ED'}
-                            </div>
-                            <h4 class="mt-3">${editor.name || 'Unknown Editor'}</h4>
-                            <p><i class="fas fa-map-marker-alt me-1"></i> ${editor.location || 'Unknown Location'}</p>
-                            <div class="editor-rate d-inline-block mt-2">$${editor.hourly_rate || '0'}/hr</div>
-                            
-                            <!-- Rating Section in Modal -->
-                            <div class="editor-rating mt-3">
-                                <div class="rating-label">Rating:</div>
-                                <div class="rating-stars" data-editor-id="${editor.id}">
-                                    ${[1, 2, 3, 4, 5].map(star => 
-                                        `<i class="fas fa-star rating-star ${star <= savedRating ? 'filled' : ''}" data-rating="${star}"></i>`
-                                    ).join('')}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="profile-section">
-                                <h5>About</h5>
-                                <div class="profile-info">
-                                    <div class="profile-label">Languages:</div>
-                                    <div class="profile-value">${editor.languages || 'Not specified'}</div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">Experience:</div>
-                                    <div class="profile-value">${editor.years_experience ? editor.years_experience + ' years' : 'Not specified'}</div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">Preferred Work:</div>
-                                    <div class="profile-value">${editor.preferred_work || 'Not specified'}</div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">Day Rate:</div>
-                                    <div class="profile-value">$${editor.day_rate || '0'}</div>
-                                </div>
-                            </div>
-                            
-                            <div class="profile-section">
-                                <h5>Specializations</h5>
-                                <div class="tag-container">
-                                    ${specializations}
-                                </div>
-                            </div>
-                            
-                            <div class="profile-section">
-                                <h5>Skills & Proficiency</h5>
-                                ${skills || '<p>No skills listed</p>'}
-                            </div>
-                            
-                            <div class="profile-section">
-                                <h5>Contact & Portfolio</h5>
-                                <div class="profile-info">
-                                    <div class="profile-label">Email:</div>
-                                    <div class="profile-value">${editor.email || 'Not provided'}</div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">Phone:</div>
-                                    <div class="profile-value">${editor.phone || 'Not provided'}</div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">Portfolio:</div>
-                                    <div class="profile-value">
-                                        ${editor.portfolio_link ? 
-                                            `<a href="${editor.portfolio_link}" target="_blank">${editor.portfolio_link}</a>` : 
-                                            'Not provided'
-                                        }
-                                    </div>
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-label">LinkedIn:</div>
-                                    <div class="profile-value">
-                                        ${editor.linkedin_url ? 
-                                            `<a href="${editor.linkedin_url}" target="_blank">${editor.linkedin_url}</a>` : 
-                                            'Not provided'
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Note Section in Modal -->
-                            <div class="profile-section">
-                                <h5>Notes</h5>
-                                <div class="note-label">
-                                    <span>Add a note about this editor:</span>
-                                    ${savedNote ? `<button class="delete-note" data-editor-id="${editor.id}"><i class="fas fa-trash"></i> Delete</button>` : ''}
-                                </div>
-                                <textarea class="note-text" data-editor-id="${editor.id}" placeholder="Add a note about this editor..." rows="3">${savedNote}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                const modal = new bootstrap.Modal(document.getElementById('editorProfileModal'));
-                modal.show();
-                
-                // Add event listeners to rating stars in modal
-                setTimeout(() => {
-                    const modalRatingStars = document.querySelectorAll('#editorProfileModal .rating-star');
-                    modalRatingStars.forEach(star => {
-                        star.addEventListener('click', function() {
-                            const rating = parseInt(this.dataset.rating);
-                            const editorId = this.closest('.rating-stars').dataset.editorId;
-                            
-                            // Update UI
-                            modalRatingStars.forEach(s => {
-                                if (parseInt(s.dataset.rating) <= rating) {
-                                    s.classList.add('filled');
-                                } else {
-                                    s.classList.remove('filled');
-                                }
-                            });
-                            
-                            // Save to localStorage
-                            saveRating(editorId, rating);
-                            showToast('Rating Saved', `You rated this editor ${rating} stars.`, 'success');
-                            
-                            // Update the card rating as well
-                            const cardRatingStars = document.querySelector(`.editor-card .rating-stars[data-editor-id="${editorId}"]`);
-                            if (cardRatingStars) {
-                                const cardStars = cardRatingStars.querySelectorAll('.rating-star');
-                                cardStars.forEach(s => {
-                                    if (parseInt(s.dataset.rating) <= rating) {
-                                        s.classList.add('filled');
-                                    } else {
-                                        s.classList.remove('filled');
-                                    }
-                                });
-                            }
-                        });
-                    });
-                    
-                    // Add event listener to note textarea in modal
-                    const modalNoteTextarea = document.querySelector('#editorProfileModal .note-text');
-                    modalNoteTextarea.addEventListener('input', function() {
-                        const editorId = this.dataset.editorId;
-                        const note = this.value;
-                        
-                        // Save to localStorage
-                        saveNote(editorId, note);
-                        
-                        // Show/hide delete button
-                        const deleteBtn = document.querySelector('#editorProfileModal .delete-note');
-                        if (note.trim()) {
-                            if (!deleteBtn) {
-                                const noteLabel = document.querySelector('#editorProfileModal .note-label');
-                                const newDeleteBtn = document.createElement('button');
-                                newDeleteBtn.className = 'delete-note';
-                                newDeleteBtn.dataset.editorId = editorId;
-                                newDeleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
-                                noteLabel.appendChild(newDeleteBtn);
-                                
-                                // Add event listener to new delete button
-                                newDeleteBtn.addEventListener('click', function() {
-                                    const editorId = this.dataset.editorId;
-                                    const noteTextarea = document.querySelector('#editorProfileModal .note-text');
-                                    
-                                    // Clear note
-                                    noteTextarea.value = '';
-                                    
-                                    // Remove from localStorage
-                                    deleteNote(editorId);
-                                    
-                                    // Remove delete button
-                                    this.remove();
-                                    
-                                    showToast('Note Deleted', 'The note has been deleted.', 'success');
-                                    
-                                    // Update the card note as well
-                                    const cardNoteTextarea = document.querySelector(`.editor-card .note-text[data-editor-id="${editorId}"]`);
-                                    if (cardNoteTextarea) {
-                                        cardNoteTextarea.value = '';
-                                        const cardDeleteBtn = cardNoteTextarea.parentElement.querySelector('.delete-note');
-                                        if (cardDeleteBtn) {
-                                            cardDeleteBtn.remove();
-                                        }
-                                    }
-                                });
-                            }
-                        } else if (deleteBtn) {
-                            deleteBtn.remove();
-                        }
-                        
-                        // Update the card note as well
-                        const cardNoteTextarea = document.querySelector(`.editor-card .note-text[data-editor-id="${editorId}"]`);
-                        if (cardNoteTextarea) {
-                            cardNoteTextarea.value = note;
-                            
-                            // Show/hide delete button in card
-                            const cardDeleteBtn = cardNoteTextarea.parentElement.querySelector('.delete-note');
-                            if (note.trim()) {
-                                if (!cardDeleteBtn) {
-                                    const noteLabel = cardNoteTextarea.parentElement.querySelector('.note-label');
-                                    const newDeleteBtn = document.createElement('button');
-                                    newDeleteBtn.className = 'delete-note';
-                                    newDeleteBtn.dataset.editorId = editorId;
-                                    newDeleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
-                                    noteLabel.appendChild(newDeleteBtn);
-                                    
-                                    // Add event listener to new delete button
-                                    newDeleteBtn.addEventListener('click', function() {
-                                        const editorId = this.dataset.editorId;
-                                        const noteTextarea = this.parentElement.nextElementSibling;
-                                        
-                                        // Clear note
-                                        noteTextarea.value = '';
-                                        
-                                        // Remove from localStorage
-                                        deleteNote(editorId);
-                                        
-                                        // Remove delete button
-                                        this.remove();
-                                        
-                                        showToast('Note Deleted', 'The note has been deleted.', 'success');
-                                    });
-                                }
-                            } else if (cardDeleteBtn) {
-                                cardDeleteBtn.remove();
-                            }
-                        }
-                    });
-                    
-                    // Add event listener to delete button in modal if it exists
-                    const modalDeleteBtn = document.querySelector('#editorProfileModal .delete-note');
-                    if (modalDeleteBtn) {
-                        modalDeleteBtn.addEventListener('click', function() {
-                            const editorId = this.dataset.editorId;
-                            const noteTextarea = document.querySelector('#editorProfileModal .note-text');
-                            
-                            // Clear note
-                            noteTextarea.value = '';
-                            
-                            // Remove from localStorage
-                            deleteNote(editorId);
-                            
-                            // Remove delete button
-                            this.remove();
-                            
-                            showToast('Note Deleted', 'The note has been deleted.', 'success');
-                            
-                            // Update the card note as well
-                            const cardNoteTextarea = document.querySelector(`.editor-card .note-text[data-editor-id="${editorId}"]`);
-                            if (cardNoteTextarea) {
-                                cardNoteTextarea.value = '';
-                                const cardDeleteBtn = cardNoteTextarea.parentElement.querySelector('.delete-note');
-                                if (cardDeleteBtn) {
-                                    cardDeleteBtn.remove();
-                                }
-                            }
-                        });
-                    }
-                }, 300);
-            }
-
-            // Connect on WhatsApp
-            function connectOnWhatsApp(editor) {
-                if (!editor) {
-                    editor = currentEditor;
+            
+            addTechnicalBtn.addEventListener('click', addTechnicalFromInput);
+            technicalManualInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addTechnicalFromInput();
                 }
+            });
+
+            // --- FORM SUBMISSION LOGIC ---
+            const statusMessage = document.getElementById('status-message');
+            function showMessage(text, type) {
+                statusMessage.textContent = text;
+                statusMessage.className = `show ${type}`;
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showMessage('Submitting...', 'info');
+                const formData = new FormData(form);
                 
-                if (!editor || !editor.phone) {
-                    showToast('Contact Error', 'This editor has not provided a phone number.', 'error');
+                const finalSpecializations = formData.get('specializations');
+
+                const editorData = { 
+                    name: formData.get('name'), 
+                    email: formData.get('email'), 
+                    phone: formData.get('phone'), 
+                    location: formData.get('location'), 
+                    languages: formData.get('languages'), 
+                    years_experience: parseInt(formData.get('years_experience')), 
+                    portfolio_link: formData.get('portfolio_link'), 
+                    linkedin_url: formData.get('linkedin_url'), 
+                    specializations: finalSpecializations, 
+                    most_proficient_sw: formData.get('most_proficient_sw'), 
+                    hourly_rate: formData.get('hourly_rate') ? parseInt(formData.get('hourly_rate')) : null, 
+                    day_rate: formData.get('day_rate') ? parseInt(formData.get('day_rate')) : null, 
+                    preferred_work: formData.get('preferred_work') 
+                };
+
+                // If Supabase is not configured, just show a success message
+                if (!supabase || SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+                    console.log('Form data (demo mode):', editorData);
+                    console.log('Software skills:', Array.from(selectedSoftwareSkills));
+                    console.log('Technical skills:', Array.from(selectedTechnicalSkills.entries()));
+                    
+                    showMessage('Thank you! Your profile has been submitted successfully (demo mode).', 'success');
+                    form.reset();
+                    selectedSoftwareSkills.clear();
+                    selectedTechnicalSkills.clear();
+                    renderSoftwareTags();
+                    renderTechnicalTags();
+                    updateProgress();
                     return;
                 }
                 
-                const message = `Hi ${editor.name || 'there'}, I found your profile on EditorConnect and I'm interested in discussing a potential project with you.`;
-                const whatsappUrl = `https://wa.me/${editor.phone.replace(/[^\d]/g, '')}?text=${encodeURIComponent(message)}`;
-                
-                window.open(whatsappUrl, '_blank');
-                showToast('Connecting to WhatsApp', `Opening WhatsApp to connect with ${editor.name || 'the editor'}.`, 'success');
-            }
-
-            // Show toast notification
-            function showToast(title, message, type) {
-                const toastContainer = document.getElementById('toastContainer');
-                
-                const toast = document.createElement('div');
-                toast.className = `custom-toast toast-${type}`;
-                
-                const iconClass = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-                
-                toast.innerHTML = `
-                    <div class="toast-icon">
-                        <i class="fas ${iconClass}"></i>
-                    </div>
-                    <div class="toast-content">
-                        <div class="toast-title">${title}</div>
-                        <div class="toast-message">${message}</div>
-                    </div>
-                `;
-                
-                toastContainer.appendChild(toast);
-                
-                // Auto remove after 5 seconds
-                setTimeout(() => {
-                    toast.style.animation = 'slideIn 0.3s ease-out reverse';
-                    setTimeout(() => {
-                        toastContainer.removeChild(toast);
-                    }, 300);
-                }, 5000);
-            }
-
-            // Initialize the app
-            setupEventListeners();
-            fetchEditorsData();
-        }
+                // Real submission to Supabase
+                try {
+                    const { data: insertedEditor, error: editorError } = await supabase.from('editors').insert([editorData]).select();
+                    
+                    if (editorError) { 
+                        console.error('Error inserting editor:', editorError); 
+                        showMessage('Error submitting details. Please try again.', 'error'); 
+                        return; 
+                    }
+                    
+                    const newEditorId = insertedEditor[0].id;
+                    const skillsToInsert = [];
+                    
+                    selectedSoftwareSkills.forEach(skill => { 
+                        skillsToInsert.push({ editor_id: newEditorId, skill_name: skill, proficiency: 5 }); 
+                    });
+                    
+                    selectedTechnicalSkills.forEach((proficiency, skill) => { 
+                        skillsToInsert.push({ editor_id: newEditorId, skill_name: skill, proficiency: proficiency }); 
+                    });
+                    
+                    if (skillsToInsert.length > 0) {
+                        const { error: skillsError } = await supabase.from('editor_skills').insert(skillsToInsert);
+                        if (skillsError) { 
+                            console.error('Error inserting skills:', skillsError); 
+                            showMessage('Profile saved, but there was an issue saving some skills.', 'error'); 
+                            return; 
+                        }
+                    }
+                    
+                    showMessage('Thank you! Your profile has been submitted successfully.', 'success');
+                    form.reset();
+                    selectedSoftwareSkills.clear();
+                    selectedTechnicalSkills.clear();
+                    renderSoftwareTags();
+                    renderTechnicalTags();
+                    updateProgress();
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    showMessage('Error submitting details. Please try again.', 'error');
+                }
+            });
+        });
     </script>
-
-</body></html>
-
+</body>
+</html>
